@@ -29,7 +29,7 @@ import sys
 import time
 from pathlib import Path
 
-from core.commons import constants
+from ProjectAlice.core.commons import constants
 
 PIP = './venv/bin/pip'
 YAML = f'/boot/{constants.DEVICETYPE}.yaml'
@@ -308,7 +308,7 @@ class PreInit(object):
 		result = req.json()
 
 		versions = list()
-		from core.base.model.Version import Version
+		from ProjectAlice.core import Version
 
 		for branch in result:
 			repoVersion = Version.fromString(branch['name'])

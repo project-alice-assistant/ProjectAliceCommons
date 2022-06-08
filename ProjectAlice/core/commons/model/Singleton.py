@@ -17,7 +17,7 @@
 #
 #  Last modified: 2021.04.13 at 12:56:46 CEST
 
-from core.util.model.Logger import Logger
+from ProjectAlice.core import Logger
 
 
 class Singleton(object):

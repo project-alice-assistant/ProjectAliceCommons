@@ -41,12 +41,12 @@ import requests
 from googletrans import Translator
 from paho.mqtt.client import MQTTMessage
 
-import core.base.SuperManager as SuperManager
-import core.commons.model.Slot as slotModel
-from core.base.model.Manager import Manager
-from core.commons import constants
-from core.commons.model.PartOfDay import PartOfDay
-from core.dialog.model.DialogSession import DialogSession
+from ProjectAlice import core as SuperManager
+import ProjectAlice.core.commons.model.Slot as slotModel
+from ProjectAlice.core import Manager
+from ProjectAlice.core.commons import constants
+from ProjectAlice.core.commons.model.PartOfDay import PartOfDay
+from ProjectAlice.core import DialogSession
 
 
 class CommonsManager(Manager):
