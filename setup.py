@@ -24,7 +24,7 @@ from setuptools import find_packages, setup
 
 setup(
 	name='ProjectAlice',
-	version='0.0.1',
+	version='0.0.2',
 	long_description=Path('README.md').read_text(encoding='utf8'),
 	long_description_content_type='text/markdown',
 	python_requires='>=3.7',

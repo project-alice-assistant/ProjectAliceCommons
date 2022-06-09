@@ -280,7 +280,7 @@ class PreInit(object):
 		try:
 			# Close everything related to ProjectAlice, allows restart without component failing
 			try:
-				# noinspection PyUnresolvedReferences
+				# noinspection PyUnresolvedReferences,PyPackageRequirements
 				import psutil
 			except:
 				self.setServiceFileTo('system')
@@ -290,6 +290,7 @@ class PreInit(object):
 
 			# noinspection PyUnboundLocalVariable
 			process = psutil.Process(os.getpid())
+			# noinspection PyTypeChecker
 			for handler in process.open_files() + process.connections():
 				os.close(handler.fd)
 		except Exception as e:
@@ -499,13 +500,13 @@ class Initializer(object):
 
 
 	# common
-	def installCommonDependencies(self):
+	@staticmethod
+	def installCommonDependencies():
 		subprocess.run(['sudo', 'apt', 'install', '-y', f'./system/snips/snips-platform-common_0.64.0_armhf.deb'])
 		subprocess.run(['sudo', 'apt', 'install', '-y', f'./system/snips/snips-hotword_0.64.0_armhf.deb'])
 		subprocess.run(['sudo', 'systemctl', 'stop', 'snips-hotword'])
 		subprocess.run(['sudo', 'systemctl', 'disable', 'snips-hotword'])
-		subprocess.run(['sudo', 'apt', 'install', '-y',
-		                f'./system/snips/snips-hotword-model-heysnipsv4_0.64.0_armhf.deb'])
+		subprocess.run(['sudo', 'apt', 'install', '-y', f'./system/snips/snips-hotword-model-heysnipsv4_0.64.0_armhf.deb'])
 
 
 	# specific! ProjectAlice
@@ -514,12 +515,9 @@ class Initializer(object):
 		subprocess.run(['sudo', 'systemctl', 'stop', 'snips-nlu'])
 		subprocess.run(['sudo', 'systemctl', 'disable', 'snips-nlu'])
 
-		subprocess.run(['wget',
-		                'http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb'])
-		subprocess.run(['wget',
-		                'http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb'])
-		subprocess.run(['sudo', 'apt', 'install', '-y', './libttspico0_1.0+git20130326-9_armhf.deb',
-		                './libttspico-utils_1.0+git20130326-9_armhf.deb'])
+		subprocess.run(['wget', 'http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico0_1.0+git20130326-9_armhf.deb'])
+		subprocess.run(['wget', 'http://ftp.us.debian.org/debian/pool/non-free/s/svox/libttspico-utils_1.0+git20130326-9_armhf.deb'])
+		subprocess.run(['sudo', 'apt', 'install', '-y', './libttspico0_1.0+git20130326-9_armhf.deb', './libttspico-utils_1.0+git20130326-9_armhf.deb'])
 
 		subprocess.run(['rm', 'libttspico0_1.0+git20130326-9_armhf.deb'])
 		subprocess.run(['rm', 'libttspico-utils_1.0+git20130326-9_armhf.deb'])
