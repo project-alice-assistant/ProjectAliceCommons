@@ -1,4 +1,23 @@
-VERSION = 1.24
+VERSION = 1.26
+
+#  Copyright (c) 2022
+#
+#  This file, Initializer.py, is part of Project Alice.
+#
+#  Project Alice is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program.  If not, see <https://www.gnu.org/licenses/>
+#
+#  Last modified: 2022.06.09 at 13:10:35 CEST
 
 #  Copyright (c) 2021
 #
@@ -30,6 +49,7 @@ import time
 from pathlib import Path
 
 from ProjectAlice.core.commons import constants
+
 
 PIP = './venv/bin/pip'
 YAML = f'/boot/{constants.DEVICETYPE}.yaml'
@@ -105,7 +125,7 @@ class PreInit(object):
 	def __init__(self):
 		self._logger = SimpleLogger(prepend='PreInitializer')
 
-		self.rootDir = Path(__file__).resolve().parent.parent
+		self.rootDir = Path.home() / Path('ProjectAlice')
 		self.confsFile = Path(self.rootDir, 'config.json')
 		self.initFile = Path(YAML)
 		self.initConfs = dict()
@@ -308,7 +328,7 @@ class PreInit(object):
 		result = req.json()
 
 		versions = list()
-		from ProjectAlice.core import Version
+		from ProjectAlice.core.base.model import Version
 
 		for branch in result:
 			repoVersion = Version.fromString(branch['name'])

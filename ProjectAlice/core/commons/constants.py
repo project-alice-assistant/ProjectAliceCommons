@@ -26,7 +26,7 @@ GITHUB_REPOSITORY_ID                   = 193512918
 PYTHON                                 = 'python3.7'
 
 # Satellite
-VERSION                                = '1.0.0-rc1'
+VERSION                                = '1.0.0-rc5'
 DEVICETYPE                             = 'ProjectAliceSatellite'
 GITHUB_REPOSITORY_ID                   = 250856660
 
