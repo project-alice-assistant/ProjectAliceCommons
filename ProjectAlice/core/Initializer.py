@@ -48,7 +48,9 @@ import sys
 import time
 from pathlib import Path
 
-from ProjectAlice.core.commons import constants
+# Importing project specific constants
+# noinspection PyPackageRequirements
+from core.commons import constants
 
 
 PIP = './venv/bin/pip'

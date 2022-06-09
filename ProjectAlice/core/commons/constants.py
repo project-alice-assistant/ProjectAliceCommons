@@ -17,22 +17,6 @@
 #
 #  Last modified: 2022.06.08 at 12:56:46 CEST
 
-## TODO: Start: To split in own files per repo.
-# Alice Core
-VERSION                                = '1.0.0-rc3'
-DEVICETYPE                             = 'ProjectAlice'
-GITHUB_REPOSITORY_ID                   = 193512918
-
-PYTHON                                 = 'python3.7'
-
-# Satellite
-VERSION                                = '1.0.0-rc5'
-DEVICETYPE                             = 'ProjectAliceSatellite'
-GITHUB_REPOSITORY_ID                   = 250856660
-
-PYTHON                                 = 'python3.7'
-## TODO: End of repository specific constants!
-
 # System
 ALL                                    = 'all'
 DATABASE_FILE                          = 'system/database/data.db'
